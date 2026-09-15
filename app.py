@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file, Response, request, jsonify, url_for, flash
+import requests
 from dbclass import *
 from db import *
 
@@ -10,6 +11,9 @@ init_db()
 def index():
     return render_template("index.html")
 
+@app.route("/adicionar")
+def adicionar_produto():
+    dados = requests.json
 
 if __name__ == "__main__":
     app.run(debug=True)
