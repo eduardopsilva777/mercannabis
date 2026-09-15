@@ -2,43 +2,49 @@ from db import *
 from flask import request, jsonify
 
 class produtos:
-<<<<<<< HEAD
-=======
 
-    def __init__(self):
+    def __init__(self, id, titulo, descricao, valor, cartegoria):
         dados = request.get_json()
-        titulo = dados["titulo"]
-        descricao = 
+        self.titulo = dados["titulo"]
+        self.descricao = dados["descricao"]
+        self.valor = dados["valor"]
+        self.cartegoria = ["cartegoria"]
+
     
->>>>>>> 97405987d9d18e5059e65473d0228904d82cc7da
-    def cadastro (self, titulo, descricao, valor, cartegoria):
+    def cadastro (self):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
 
-        c.execute(""" INSERT INTO produtos (titulo, descricao, valor, cartegoria)
+        c.execute("""INSERT INTO produtos (titulo, descricao, valor, cartegoria)
         VALUES (?, ?, ?, ?)
-        """, (titulo, descricao, valor, cartegoria))
+        """, (self.titulo, self.descricao, self.valor, self.cartegoria))
 
         conn.commit()
         conn.close
 
-    def exclusao (self, id):
+    def exclusao (self):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
 
-        c.execute(""" DELETE FROM produtos WHERE id = ?
-        """, (id))
+        c.execute("""DELETE FROM produtos WHERE id = ?
+        """, (self.id))
 
         conn.commit()
         conn.close()
 
-    def editar (self, id, titulo, descricão, valor, cartegoria):
+    def editar (self):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
+        c.execute('UPDATE produtos SET titulo = ?, descricao = ?, valor = ?, cartegoria = ?,  WHERE id = ?', (self.titulo, self.descricao, self.valor, self.cartegoria)) 
+        conn.commit()
+        conn.close()
 
     def exibir (self):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
+        c.execute("SELECT * FROM produtos")
+        conn.close()
+        return c.fetchall()
 
 class users:
     def login(self, username, password):
@@ -57,4 +63,3 @@ class users:
             print("LOGIN EFETUADO COM SUCESSO.")
         else:
             print("USUARIO NAO EXISTE")
-            
