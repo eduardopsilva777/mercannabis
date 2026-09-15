@@ -9,7 +9,7 @@ async function adicionarProduto() {
         return;
     }
 
-    await fetch('/api/adicionar', {
+    await fetch('/adicionar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ titulo, descricao, valor, cartegoria })
