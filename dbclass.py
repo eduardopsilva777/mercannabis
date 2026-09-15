@@ -1,12 +1,11 @@
 from db import *
 
 class produtos:
-    
     def cadastro (self, titulo, descricao, valor, cartegoria):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
 
-        c.execute("""INSERT INTO produtos (titulo, descricao, valor, cartegoria)
+        c.execute(""" INSERT INTO produtos (titulo, descricao, valor, cartegoria)
         VALUES (?, ?, ?, ?)
         """, (titulo, descricao, valor, cartegoria))
 
@@ -17,25 +16,35 @@ class produtos:
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
 
-        c.execute("""DELETE FROM produtos WHERE id = ?
+        c.execute(""" DELETE FROM produtos WHERE id = ?
         """, (id))
 
         conn.commit()
         conn.close()
 
-    def editar (self, id, titulo, descricao, valor, cartegoria):
+    def editar (self, id, titulo, descricão, valor, cartegoria):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
-        c.execute('UPDATE produtos SET titulo = ?, descricao = ?, valor = ?, cartegoria = ?,  WHERE id = ?', (titulo, descricao, valor, cartegoria)) 
-        conn.commit()
-        conn.close()
 
     def exibir (self):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
-        c.execute("SELECT * FROM produtos")
-        conn.close()
-        return c.fetchall()
 
 class users:
-    None
+    def login(self, username, password):
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+        c.execute("""
+            SELECT id, username, password FROM users WHERE username = ?
+            """,
+            (username,)
+            
+        )
+        
+        usuario = c.fetchone()
+        
+        if usuario:
+            print("LOGIN EFETUADO COM SUCESSO.")
+        else:
+            print("USUARIO NAO EXISTE")
+            
