@@ -13,7 +13,9 @@ def index():
 
 @app.route("/adicionar")
 def adicionar_produto():
-    dados = requests.json
+    dados = request.get_json()
+
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
