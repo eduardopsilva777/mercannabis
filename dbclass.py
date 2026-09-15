@@ -1,6 +1,16 @@
 from db import *
+from flask import request, jsonify
 
 class produtos:
+<<<<<<< HEAD
+=======
+
+    def __init__(self):
+        dados = request.get_json()
+        titulo = dados["titulo"]
+        descricao = 
+    
+>>>>>>> 97405987d9d18e5059e65473d0228904d82cc7da
     def cadastro (self, titulo, descricao, valor, cartegoria):
         conn = sqlite3.connect('database.db')
         c = conn.cursor()

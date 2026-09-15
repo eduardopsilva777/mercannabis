@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>MERCANNABIS</title>
+</head>
+<body>
+    <div id="div-cadastro" class="content">
+        <input id="titulo" type="text">
+        <input id="descricao" type="text">
+        <input id="valor" type="text">
+        <input id="cartegoria" type="text">
+        <button onclick="adicionarProduto()">Cadastrar</button>
+    </div>
+</body>
+</html>
