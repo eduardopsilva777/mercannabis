@@ -7,9 +7,9 @@ def init_db():
     c.execute('''
         CREATE TABLE IF NOT EXISTS produtos (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nome TEXT NOT NULL,
+                    titulo TEXT NOT NULL,
                     descricao TEXT NOT NULL,
-                    cartegoria TEXT NOT NULL
+                    cartegoria TEXT NOT NULL,
                     preco REAL NOT NULL,
                     product_created_at TEXT DEFAULT CURRENT_TIMESTAMP
                     );
